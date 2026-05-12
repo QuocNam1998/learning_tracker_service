@@ -1,7 +1,7 @@
-import pool from "../../db";
+import pool from '../../db';
 
 const getAllDailySession = async () => {
-  const result = await pool.query("select * from daily_session");
+  const result = await pool.query('select * from daily_session');
   return result.rows;
 };
 

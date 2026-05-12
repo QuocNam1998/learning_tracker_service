@@ -13,10 +13,13 @@
       "Bash(rm -rf C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm)",
       "Bash(cp -r /tmp/npm-fresh/package C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm)",
       "Bash(npm --version)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(Select-String -Pattern \"prettier\" -SimpleMatch)",
+      "Bash(mkdir -p \"c:/dev/BE/NodeJS/.vscode\")"
     ],
     "additionalDirectories": [
-      "C:\\Users\\james\\AppData\\Roaming\\nvm\\v22.11.0\\node_modules\\npm\\node_modules\\minipass-sized\\node_modules"
+      "C:\\Users\\james\\AppData\\Roaming\\nvm\\v22.11.0\\node_modules\\npm\\node_modules\\minipass-sized\\node_modules",
+      "c:\\dev\\BE\\NodeJS"
     ]
   }
 }

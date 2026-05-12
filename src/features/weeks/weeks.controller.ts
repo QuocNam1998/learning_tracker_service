@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import { AppError } from "../../middlewares/errorHandler";
-import { getAllWeeks } from "./weeks.queries";
+import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../../middlewares/errorHandler';
+import { getAllWeeks } from './weeks.queries';
 
 export const getWeeks = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
