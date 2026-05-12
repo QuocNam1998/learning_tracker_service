@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/c/Users/james/AppData/Roaming/nvm/nvm.exe\" --version)",
+      "Bash(node -e \"const m = require\\('C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm/node_modules/minipass-sized/node_modules/minipass'\\); console.log\\(typeof m, Object.keys\\(m\\).slice\\(0,5\\)\\);\")",
+      "Bash(rm -rf \"C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm/node_modules/minipass-sized/node_modules\" && echo \"Deleted stale nested minipass\")",
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "Bash(cd /tmp)",
+      "Bash(curl -L \"https://registry.npmjs.org/npm/-/npm-11.14.1.tgz\" -o npm-latest.tgz)",
+      "Bash(mkdir -p npm-fresh)",
+      "Bash(tar -xzf npm-latest.tgz -C npm-fresh)",
+      "Bash(rm -rf C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm)",
+      "Bash(cp -r /tmp/npm-fresh/package C:/Users/james/AppData/Roaming/nvm/v22.11.0/node_modules/npm)",
+      "Bash(npm --version)",
+      "Bash(npm run *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\james\\AppData\\Roaming\\nvm\\v22.11.0\\node_modules\\npm\\node_modules\\minipass-sized\\node_modules"
+    ]
+  }
+}
