@@ -1,6 +1,6 @@
-import { Router } from "express";
-import { getDailySession } from "./daily-session.controller";
+import { Router } from 'express';
+import { getDailySession } from './daily-session.controller';
 const dailySessionRoutes = Router();
-dailySessionRoutes.get("/daily-session", getDailySession);
+dailySessionRoutes.get('/', getDailySession);
 
 export default dailySessionRoutes;

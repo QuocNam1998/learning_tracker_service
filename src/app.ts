@@ -1,16 +1,13 @@
-import "dotenv/config";
-import express from "express";
-import weeksRoutes from "./features/weeks/weeks.routes";
-import { errorHandler } from "./middlewares/errorHandler";
-import dailySessionRoutes from "./features/daily-session/daily-session.routes";
+import 'dotenv/config';
+import { Router } from 'express';
+import weeksRoutes from './features/weeks/weeks.routes';
+import dailySessionRoutes from './features/daily-session/daily-session.routes';
 
-const app = express();
-app.use(express.json());
-app.use("/", (_req, res) => {
-  res.status(200).end("Welcome to learning_tracker_services!");
+const appRoutes = Router();
+appRoutes.get('/', (_, res) => {
+  res.status(200).json('Welcome to learning_tracker_service!');
 });
-app.use("/weeks", weeksRoutes);
-app.use("/daily-session", dailySessionRoutes);
-app.use(errorHandler);
+appRoutes.use('/weeks', weeksRoutes);
+appRoutes.use('/daily-session', dailySessionRoutes);
 
-export default app;
+export default appRoutes;

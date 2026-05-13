@@ -1,4 +1,4 @@
-import pool from '../../db';
+import pool from '../../configs/db';
 
 const getAllDailySession = async () => {
   const result = await pool.query('select * from daily_session');
