@@ -5,12 +5,14 @@
     "build": "tsc"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.20.0",
     "undici": "^7.24.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.0",
