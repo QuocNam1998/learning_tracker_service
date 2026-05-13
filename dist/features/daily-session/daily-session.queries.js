@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllDailySession = void 0;
-const db_1 = __importDefault(require("../../db"));
+const db_1 = __importDefault(require("../../configs/db"));
 const getAllDailySession = async () => {
     const result = await db_1.default.query('select * from daily_session');
     return result.rows;

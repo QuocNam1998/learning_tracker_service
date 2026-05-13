@@ -3,9 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("./db");
+require("./configs/db");
+const express_1 = __importDefault(require("express"));
+const env_1 = require("./configs/env");
 const app_1 = __importDefault(require("./app"));
-const PORT = process.env.PORT || 3000;
-app_1.default.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}`);
+const errorHandler_1 = require("./middlewares/errorHandler");
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use(app_1.default);
+app.use(errorHandler_1.errorHandler);
+app.listen(env_1.PORT, () => {
+    console.log(`Server is running on port: ${env_1.PORT}`);
 });

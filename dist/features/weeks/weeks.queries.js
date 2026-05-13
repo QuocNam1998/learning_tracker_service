@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllWeeks = void 0;
-const db_1 = __importDefault(require("../../db"));
+const db_1 = __importDefault(require("../../configs/db"));
 const getAllWeeks = async () => {
-    const result = await db_1.default.query("SELECT * FROM weeks");
+    const result = await db_1.default.query('SELECT * FROM weeks');
     return result.rows;
 };
 exports.getAllWeeks = getAllWeeks;
