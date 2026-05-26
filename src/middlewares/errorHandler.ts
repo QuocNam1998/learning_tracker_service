@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 
 export class AppError extends Error {
   statusCode: number;
@@ -12,9 +12,17 @@ export class AppError extends Error {
 }
 
 export const errorHandler = (err: Error, _req: Request, res: Response, _next: NextFunction): void => {
-  const appErr = err as AppError;
-  const message = appErr.isOperational ? appErr.message : "Something went wrong";
-  const statusCode = appErr.statusCode || 500;
   console.error(`[${new Date().toISOString()}] ${err.stack}`);
-  res.status(statusCode).json({ success: false, message });
+
+  if (err instanceof SyntaxError && 'body' in err) {
+    res.status(400).json({ success: false, message: 'Invalid JSON in request body' });
+    return;
+  }
+
+  if (err instanceof AppError) {
+    res.status(err.statusCode).json({ success: false, message: err.message });
+    return;
+  }
+
+  res.status(500).json({ success: false, message: 'Something went wrong' });
 };

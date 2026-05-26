@@ -8,7 +8,7 @@ const corsOptions: cors.CorsOptions = {
     if (!requestOrigin || allowedOrigins.includes(requestOrigin)) {
       callback(null, true);
     } else {
-      callback(new AppError(`Origin ${requestOrigin} not allowed by CORS`, 500));
+      callback(new AppError(`Origin ${requestOrigin} not allowed by CORS`, 403));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
