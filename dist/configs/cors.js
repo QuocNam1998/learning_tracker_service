@@ -12,7 +12,7 @@ const corsOptions = {
             callback(null, true);
         }
         else {
-            callback(new errorHandler_1.AppError(`Origin ${requestOrigin} not allowed by CORS`, 500));
+            callback(new errorHandler_1.AppError(`Origin ${requestOrigin} not allowed by CORS`, 403));
         }
     },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
