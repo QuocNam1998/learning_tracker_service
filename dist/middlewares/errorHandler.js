@@ -10,10 +10,15 @@ class AppError extends Error {
 }
 exports.AppError = AppError;
 const errorHandler = (err, _req, res, _next) => {
-    const appErr = err;
-    const message = appErr.isOperational ? appErr.message : "Something went wrong";
-    const statusCode = appErr.statusCode || 500;
     console.error(`[${new Date().toISOString()}] ${err.stack}`);
-    res.status(statusCode).json({ success: false, message });
+    if (err instanceof SyntaxError && 'body' in err) {
+        res.status(400).json({ success: false, message: 'Invalid JSON in request body' });
+        return;
+    }
+    if (err instanceof AppError) {
+        res.status(err.statusCode).json({ success: false, message: err.message });
+        return;
+    }
+    res.status(500).json({ success: false, message: 'Something went wrong' });
 };
 exports.errorHandler = errorHandler;
