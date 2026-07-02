@@ -4,11 +4,11 @@ import { AppError } from '../../middlewares/errorHandler';
 
 const getDailySession = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const startedAt = req.query.startedAt;
-    if (!startedAt) {
-      throw new AppError(`startedAt is required`, 400);
+    const { start, end } = req.query;
+    if (!start || !end) {
+      throw new AppError(`Missing required dates`, 400);
     }
-    const result = await getAllDailySession(startedAt.toString());
+    const result = await getAllDailySession(start.toString(), end.toString());
     res.status(200).json(result);
   } catch (error) {
     next(error);

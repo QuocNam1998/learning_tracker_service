@@ -1,9 +1,29 @@
 import pool from '../../configs/db';
 
-const getAllDailySession = async (startedAt: string) => {
-  const result = await pool.query('select * from daily_session where date = $1 order by id asc', [
-    '2026-05-11T08:42:46.838Z',
+const getAllDailySession = async (start: string, end: string) => {
+  const result = await pool.query('SELECT * FROM daily_session WHERE date >= $1 AND date < $2 ORDER BY date', [
+    decodeURIComponent(start),
+    decodeURIComponent(end),
   ]);
+  const dailySessions = result.rows ?? [];
+  if (!dailySessions.length) {
+    return await createDailySession();
+  }
+  return dailySessions;
+};
+
+const createDailySession = async () => {
+  const query = `INSERT INTO daily_session (week_id, date, session_type, notes, is_completed)
+VALUES
+  (1, (CURRENT_DATE + interval '13 hours') AT TIME ZONE 'UTC', 'calisthenics', 'full-body: pull + push + legs', false),
+  (1, (CURRENT_DATE + interval '14 hours') AT TIME ZONE 'UTC', 'technical', 'postgres: continue resolving hackerrank exercise', false),
+  (1, (CURRENT_DATE + interval '15 hours') AT TIME ZONE 'UTC', 'english', 'learna-ai: review one topic and learn the new one', false)
+ON CONFLICT ON CONSTRAINT unique_week_date DO UPDATE
+SET session_type = EXCLUDED.session_type,
+    notes = EXCLUDED.notes,
+    is_completed = EXCLUDED.is_completed
+RETURNING *`;
+  const result = await pool.query(query);
   return result.rows;
 };
 
